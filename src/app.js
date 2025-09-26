@@ -23,6 +23,8 @@ app.get('/', (req, res) => {
 });
 
 import userRouter from "./routes/user.routes.js";
+import foodRouter from "./routes/food.routes.js";
 
 // routes
 app.use("/api/user", userRouter);
+app.use("/api/food", foodRouter);
