@@ -5,6 +5,6 @@ import { verifyFirebaseToken } from "../utils/verifyToken.js";
 const router = Router();
 
 router.get("/me", verifyFirebaseToken, getProfile);
-router.post("/user", verifyFirebaseToken, createUser);
+router.post("/create", verifyFirebaseToken, createUser);
 
 export default router

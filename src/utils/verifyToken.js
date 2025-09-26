@@ -1,4 +1,4 @@
-import admin from "firebase-admin";
+import admin from "../configs/firebase.js";
 import User from "../models/user.model.js";
 
 // Middleware to verify Firebase token
@@ -8,16 +8,12 @@ const verifyFirebaseToken = async (req, res, next) => {
     return res.status(401).send("Unauthorized");
 
   const token = authHeader.split(" ")[1];
-  console.log(token)
 
   try {
-    console.log("inside try")
     const decoded = await admin.auth().verifyIdToken(token);
-    console.log(decoded)
     req.firebaseUser = decoded; // contains uid, email, etc.
     next();
   } catch (err) {
-    console.log(err)
     return res.status(401).send("Invalid token");
   }
 };
